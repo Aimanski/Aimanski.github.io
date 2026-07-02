@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aiman Balang — Portfolio</title>
+<script>
+  (function () {
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#home" class="nav-id"><span class="dot"></span>Aiman Balang</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero wrap" id="home">
+    <div class="hero-copy">
+      <span class="eyebrow">My Portfolio / 2026</span>
+      <h1>Aiman Balang,<br><span class="accent-italic">aspiring</span> Software Engineer.</h1>
+      <p class="lead">I'm Aiman Balang, 4th Year College in the Philippines. I develop Website, Mobile Application, and Other related projects.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View projects</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="social-row" aria-label="Social links">
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Gmail">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 6 9 7 9-7"/></svg>
+        </a>
+        <a href="#" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="avatar-frame">
+      <div class="avatar-blob">
+        <img src="assets/images/myAvatar.jpg" alt="Aiman Balang" class="avatar-img avatar-img-light">
+        <img src="assets/images/myAvatarSleeping.jpg" alt="Aiman Balang sleeping" class="avatar-img avatar-img-dark">
+      </div>
+      <div class="avatar-status"><span class="dot"></span>Available for freelance</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section wrap" id="about">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">01 — About</span>
+        <h2>A little <span class="accent-italic">about</span> me.</h2>
+      </div>
+      <p class="desc">Know more things about me.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Hi, I'm Aiman Balang from Caloocan City, Metro Manila, Philippines. I am currently studying Information Systems at La Concepcion College. While my program covers both technical and business aspects, I am more focused on software development and building strong programming skills.</p>
+        <p>My goal is to become a professional Software Engineer. I’m passionate about writing clean code, solving problems, and creating reliable applications. I’m committed to continuous learning and excited to grow in the tech industry.</p>
+      </div>
+      <div class="dossier reveal">
+        <div class="dossier-row"><span class="key">Location</span><span class="val">Caloocan City, Metro Manila, Philippines</span></div>
+        <div class="dossier-row"><span class="key">Focus</span><span class="val">Software related Projects</span></div>
+        <div class="dossier-row"><span class="key">Currently</span><span class="val">Building personal projects</span></div>
+        <div class="dossier-row"><span class="key">Experience</span><span class="val">Doing programming for almost 4 years</span></div>
+        <div class="dossier-row"><span class="key">Interests</span><span class="val">Programming, Movies, Gaming, Anime</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section wrap" id="projects">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">02 — Projects</span>
+        <h2>Selected <span class="accent-italic">work</span>.</h2>
+      </div>
+      <p class="desc">Explore the project i build.</p>
+    </div>
+
+    <div class="project-grid">
+
+      <article class="project-card reveal">
+        <span class="code">PRJ-01</span>
+        <h3>WeighApp</h3>
+        <p>WeighApp is a Mobile Application that make your Meal Plan and track your Daily Calorie intake.</p>
+        <div class="tag-row"><span class="tag">TypeScript</span><span class="tag">React Native</span><span class="tag">Supabase</span></div>
+        <a href="#" class="project-link">View project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </article>
+
+      <article class="project-card reveal">
+        <span class="code">PRJ-02</span>
+        <h3>Coming Soon...</h3>
+        <p>Soon...</p>
+        <div class="tag-row"><span class="tag">Soon</span><span class="tag">Soon</span></div>
+        <a href="#" class="project-link">View project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </article>
+
+      <article class="project-card reveal">
+        <span class="code">PRJ-03</span>
+        <h3>Coming Soon...</h3>
+        <p>Soon...</p>
+        <div class="tag-row"><span class="tag">Soon</span><span class="tag">Soon</span>
+        <a href="#" class="project-link">View project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </article>
+
+      <article class="project-card reveal">
+        <span class="code">PRJ-04</span>
+        <h3>Coming Soon...</h3>
+        <p>Soon...</p>
+        <div class="tag-row"><span class="tag">Soon</span><span class="tag">Soon</span></div>
+        <a href="#" class="project-link">View project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="section wrap" id="stack">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">03 — Stack</span>
+        <h2>Tools I <span class="accent-italic">reach</span> for.</h2>
+      </div>
+      <p class="desc">These are the tools that I'm Using or Interested.</p>
+    </div>
+
+    <div class="stack-groups reveal">
+      <div>
+        <span class="stack-group-label">Languages</span>
+        <div class="pill-row">
+          <span class="pill">TypeScript</span><span class="pill">JavaScript</span><span class="pill">Java</span><span class="pill">PHP</span><span class="pill">MySQL</span><span class="pill">C++</span>
+        </div>
+      </div>
+      <div>
+        <span class="stack-group-label">Frameworks &amp; Libraries</span>
+        <div class="pill-row">
+          <span class="pill">React Native</span><span class="pill">React</span><span class="pill">Bootstrap</span><span class="pill">Vue</span>
+        </div>
+      </div>
+      <div>
+        <span class="stack-group-label">Tools &amp; Platforms</span>
+        <div class="pill-row">
+          <span class="pill">VS Code</span><span class="pill">Trae</span><span class="pill">GitHub</span><span class="pill">Claude</span><span class="pill">Expo Go</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee reveal">
+      <div class="marquee-track" id="marqueeTrack">
+        <span>VS Code</span><span>Trae</span><span>GitHub</span><span>Claude</span><span>Expo Go</span>
+        <span>VS Code</span><span>Trae</span><span>GitHub</span><span>Claude</span><span>Expo Go</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section wrap" id="contact">
+    <div class="contact-section reveal">
+      <span class="eyebrow">04 — Contact</span>
+      <h2>Let's build<br>something UNIQUE.</h2>
+      <a href="mailto:lorem.ipsum@example.com" class="mail">aimanumparabalang@gmail.com</a>
+      <div class="social-row" aria-label="Social links">
+        <a href="https://www.facebook.com/Aimannapogi" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" aria-label="Gmail">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 6 9 7 9-7"/></svg>
+        </a>
+        <a href="https://github.com/Aimanski" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© <span id="year"></span> Aiman Balang. All rights reserved.</span>
+  <span>Built with Heart &amp; Passion.</span>
+</footer>
+
+<script src="javascript/index.js"></script>
+</body>
+</html> 
