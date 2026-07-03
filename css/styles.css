@@ -37,6 +37,7 @@
   /* layout */
   --max-w: 1180px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
+  --nav-h: 76px;
   --radius-lg: 28px;
   --radius-md: 16px;
   --radius-sm: 10px;
@@ -90,6 +91,14 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.02em; }
@@ -177,6 +186,7 @@ body {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
+  min-height: var(--nav-h);
   padding: 1.1rem var(--gutter);
   display: flex;
   align-items: center;
@@ -626,14 +636,24 @@ footer {
    ========================================================================== */
 
 @media (max-width: 860px) {
-  .nav-links { position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
-    background: var(--bg); flex-direction: column; padding: 2rem var(--gutter);
-    gap: 1.5rem; font-size: 1.1rem; transform: translateX(100%);
-    transition: transform 0.35s var(--ease); }
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0; bottom: 0;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    flex-direction: column;
+    padding: 2rem var(--gutter);
+    gap: 1.5rem;
+    font-size: 1.1rem;
+    transform: translateX(100%);
+    transition: transform 0.35s var(--ease), background-color 0.3s var(--ease);
+    z-index: 99;
+  }
   .nav-links.is-open { transform: translateX(0); }
   .nav-toggle { display: block; }
 
-  .hero { grid-template-columns: 1fr; text-align: center; padding-top: 6.5rem; }
+  .hero { grid-template-columns: 1fr; text-align: center; padding-top: calc(var(--nav-h) + 1.5rem); }
   .hero-copy p.lead { margin-inline: auto; }
   .hero-actions, .social-row { justify-content: center; }
   .avatar-frame { order: -1; margin-bottom: 1rem; }
@@ -645,4 +665,9 @@ footer {
 
 @media (max-width: 480px) {
   .dossier-row { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+
+@media (max-width: 400px) {
+  :root { --gutter: 16px; }
+  .nav-id { font-size: 0.85rem; }
 }
