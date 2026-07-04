@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Replace with your deployed Cloudflare Worker URL, e.g.
   // "https://portfolio-chatbot.your-subdomain.workers.dev"
-  const CHATBOT_ENDPOINT = "https://portfolio-chatbot.your-subdomain.workers.dev";
+  const CHATBOT_ENDPOINT = "https://portfolio-chatbot.aiman-dev.workers.dev";
 
   if (chatbot && chatbotToggle && chatbotForm) {
 
