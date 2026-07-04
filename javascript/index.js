@@ -95,8 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatbotInput = document.getElementById('chatbotInput');
   const chatbotSuggestions = document.getElementById('chatbotSuggestions');
 
-  // Replace with your deployed Cloudflare Worker URL, e.g.
-  // "https://portfolio-chatbot.your-subdomain.workers.dev"
   const CHATBOT_ENDPOINT = "https://portfolio-chatbot.aiman-dev.workers.dev";
 
   if (chatbot && chatbotToggle && chatbotForm) {
@@ -107,58 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isOpen) chatbotInput.focus();
     });
 
-    // local fallback knowledge base — used only if the AI endpoint is
-    // unreachable (not yet deployed, offline, rate-limited, etc.)
-    const knowledgeBase = [
-      {
-        keywords: ['project', 'projects', 'work', 'built', 'build', 'weighapp'],
-        reply: "Aiman's featured project is WeighApp — a mobile app for meal planning and daily calorie tracking, built with TypeScript, React Native, and Supabase. A few more projects are on the way — check the Projects section above!"
-      },
-      {
-        keywords: ['stack', 'tech', 'technology', 'technologies', 'language', 'languages', 'framework', 'tools', 'skills'],
-        reply: "Aiman works with TypeScript, JavaScript, Java, PHP, MySQL, and C++, using frameworks like React Native, React, Bootstrap, and Vue. Daily tools include VS Code, GitHub, Expo Go, and Claude."
-      },
-      {
-        keywords: ['about', 'who', 'background', 'study', 'studying', 'school', 'college', 'location', 'from', 'live'],
-        reply: "Aiman Balang is a 4th year Information Systems student at La Concepcion College, based in Caloocan City, Metro Manila, Philippines. He's focused on software development and aiming to become a professional Software Engineer."
-      },
-      {
-        keywords: ['experience', 'years', 'long', 'programming since'],
-        reply: "Aiman has been programming for almost 4 years, building websites, mobile apps, and other software projects along the way."
-      },
-      {
-        keywords: ['contact', 'email', 'reach', 'hire', 'freelance', 'available', 'gmail'],
-        reply: "You can reach Aiman at aimanumparabalang@gmail.com, or use the Facebook and GitHub links in the Contact section below. He's currently open to freelance opportunities!"
-      },
-      {
-        keywords: ['github', 'facebook', 'social'],
-        reply: "You'll find Aiman's GitHub and Facebook links in the nav's social icons and down in the Contact section."
-      },
-      {
-        keywords: ['interest', 'interests', 'hobby', 'hobbies', 'anime', 'gaming', 'movies'],
-        reply: "Outside of code, Aiman's into programming side-projects, movies, gaming, and anime."
-      },
-      {
-        keywords: ['hello', 'hi', 'hey', 'sup'],
-        reply: "Hey there! Ask me about Aiman's projects, tech stack, background, or how to get in touch."
-      },
-      {
-        keywords: ['thanks', 'thank you', 'thx'],
-        reply: "You're welcome! Let me know if there's anything else you'd like to know."
-      }
-    ];
-
-    const fallbackReply = "I'm having trouble reaching my AI brain right now, but here's what I know: try asking about Aiman's projects, tech stack, background, or how to contact him.";
-
-    const findLocalReply = (text) => {
-      const lower = text.toLowerCase();
-      for (const entry of knowledgeBase) {
-        if (entry.keywords.some(kw => lower.includes(kw))) {
-          return entry.reply;
-        }
-      }
-      return fallbackReply;
-    };
+    const fallbackReply = "I'm having trouble reaching my AI brain right now — please try again in a moment, or reach out directly at aimanumparabalang@gmail.com.";
 
     const addMessage = (text, sender) => {
       const msg = document.createElement('div');
@@ -203,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         addMessage(reply, 'bot');
       } catch (err) {
         typingEl.remove();
-        addMessage(findLocalReply(trimmed), 'bot');
+        addMessage(fallbackReply, 'bot');
       }
     };
 
