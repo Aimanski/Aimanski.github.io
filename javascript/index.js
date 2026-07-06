@@ -107,6 +107,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fallbackReply = "I'm having trouble reaching my AI brain right now — please try again in a moment, or reach out directly at aimanumparabalang@gmail.com.";
 
+    const chatbotSendBtn = chatbotForm.querySelector('.chatbot-send');
+    const COOLDOWN_SECONDS = 10;
+    let cooldownActive = false;
+
+    const startCooldown = () => {
+      cooldownActive = true;
+      chatbotInput.disabled = true;
+      chatbotSendBtn.disabled = true;
+      chatbotSendBtn.classList.add('is-cooldown');
+
+      let remaining = COOLDOWN_SECONDS;
+      chatbotSendBtn.textContent = remaining;
+
+      const tick = setInterval(() => {
+        remaining -= 1;
+        if (remaining <= 0) {
+          clearInterval(tick);
+          cooldownActive = false;
+          chatbotInput.disabled = false;
+          chatbotSendBtn.disabled = false;
+          chatbotSendBtn.classList.remove('is-cooldown');
+          chatbotSendBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>';
+          chatbotInput.focus();
+        } else {
+          chatbotSendBtn.textContent = remaining;
+        }
+      }, 1000);
+    };
+
     const addMessage = (text, sender) => {
       const msg = document.createElement('div');
       msg.className = `chatbot-msg chatbot-msg-${sender}`;
@@ -139,8 +168,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const handleUserText = async (text) => {
       const trimmed = text.trim();
-      if (!trimmed) return;
+      if (!trimmed || cooldownActive) return;
       addMessage(trimmed, 'user');
+      startCooldown();
 
       const typingEl = addTypingIndicator();
 
@@ -156,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chatbotForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (cooldownActive) return;
       handleUserText(chatbotInput.value);
       chatbotInput.value = '';
     });
@@ -163,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (chatbotSuggestions) {
       chatbotSuggestions.querySelectorAll('.chatbot-chip').forEach(chip => {
         chip.addEventListener('click', () => {
+          if (cooldownActive) return;
           const q = chip.getAttribute('data-q');
           const labels = { projects: 'Tell me about the projects', stack: 'What tech stack does Aiman use?', about: 'Tell me about Aiman', contact: 'How can I contact Aiman?' };
           handleUserText(labels[q] || q);
