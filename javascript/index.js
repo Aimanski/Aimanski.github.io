@@ -203,4 +203,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  /* ---------- resume modal ---------- */
+  const resumeModal = document.getElementById('resumeModal');
+  const viewResumeBtn = document.getElementById('viewResumeBtn');
+  const closeResumeModal = document.getElementById('closeResumeModal');
+
+  if (resumeModal && viewResumeBtn && closeResumeModal) {
+    const openModal = () => {
+      resumeModal.style.display = 'flex';
+      resumeModal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      resumeModal.classList.remove('show');
+      setTimeout(() => {
+        resumeModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }, 300);
+    };
+
+    viewResumeBtn.addEventListener('click', openModal);
+
+    closeResumeModal.addEventListener('click', closeModal);
+
+    resumeModal.addEventListener('click', (e) => {
+      if (e.target === resumeModal) {
+        closeModal();
+      }
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && resumeModal.classList.contains('show')) {
+        closeModal();
+      }
+    });
+  }
+
 });
