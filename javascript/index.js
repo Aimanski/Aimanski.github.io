@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatbotMessages = document.getElementById('chatbotMessages');
   const chatbotForm = document.getElementById('chatbotForm');
   const chatbotInput = document.getElementById('chatbotInput');
-  const chatbotSuggestions = document.getElementById('chatbotSuggestions');
 
   const CHATBOT_ENDPOINT = "https://portfolio-chatbot.aiman-dev.workers.dev";
 
@@ -190,17 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
       handleUserText(chatbotInput.value);
       chatbotInput.value = '';
     });
-
-    if (chatbotSuggestions) {
-      chatbotSuggestions.querySelectorAll('.chatbot-chip').forEach(chip => {
-        chip.addEventListener('click', () => {
-          if (cooldownActive) return;
-          const q = chip.getAttribute('data-q');
-          const labels = { projects: 'Tell me about the projects', stack: 'What tech stack does Aiman use?', about: 'Tell me about Aiman', contact: 'How can I contact Aiman?' };
-          handleUserText(labels[q] || q);
-        });
-      });
-    }
   }
 
   /* ---------- resume modal ---------- */
