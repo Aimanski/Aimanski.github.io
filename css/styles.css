@@ -964,3 +964,163 @@ footer {
 html[data-theme="dark"] .resume-modal {
   background: rgba(23, 21, 31, 0.95);
 }
+
+/* ==========================================================================
+   Project Gallery Modal
+   ========================================================================== */
+
+.gallery-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(28, 27, 41, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  backdrop-filter: blur(8px);
+  transition: opacity 0.3s var(--ease);
+}
+
+.gallery-modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+html[data-theme="dark"] .gallery-modal {
+  background: rgba(23, 21, 31, 0.95);
+}
+
+.gallery-modal-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: 0 40px 80px -20px rgba(28,27,41,0.6);
+  padding: 24px;
+}
+
+.gallery-image-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-image {
+  max-width: 78vw;
+  max-height: 62vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: calc(var(--radius-lg) - 8px);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
+}
+
+.gallery-counter {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--ink);
+  color: var(--bg);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.gallery-caption {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.gallery-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.gallery-nav {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 10px 20px -5px rgba(28,27,41,0.4);
+  transition: transform 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+
+.gallery-nav:hover { background: var(--accent); transform: scale(1.1); }
+.gallery-nav svg { width: 20px; height: 20px; stroke: currentColor; }
+
+.gallery-thumbs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  max-width: 78vw;
+  padding-bottom: 2px;
+}
+
+.gallery-thumb {
+  width: 64px;
+  height: 44px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.gallery-thumb:hover { opacity: 0.85; }
+
+.gallery-thumb.is-active {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+.project-gallery-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  padding-bottom: 2px;
+  font: inherit;
+  color: var(--ink);
+  text-align: left;
+  border-bottom: 1px solid var(--ink);
+  cursor: pointer;
+}
+
+.project-gallery-trigger:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.project-gallery-trigger:hover svg { transform: translate(3px, -3px); }
+
+@media (max-width: 640px) {
+  .gallery-modal-content { padding: 16px; gap: 10px; }
+  .gallery-image { max-width: 82vw; max-height: 54vh; }
+  .gallery-caption { max-width: 82vw; font-size: 0.82rem; padding-top: 10px; }
+  .gallery-nav { width: 40px; height: 40px; min-width: 40px; }
+  .gallery-thumbs { max-width: 82vw; }
+}

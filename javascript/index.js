@@ -191,6 +191,94 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- project gallery modal ---------- */
+  const PROJECT_GALLERIES = {
+    weighapp: [
+      { src: 'assets/images/1.jpg', caption: 'Sign up screen with Google and email options.' },
+      { src: 'assets/images/2.jpg', caption: 'This page is for your BMI computation.' },
+      { src: 'assets/images/3.jpg', caption: 'This is a small walkthrough/tutorial.' },
+      { src: 'assets/images/4.jpg', caption: 'This is the main page, WeighApp has daily streak to track your daily activity.' },
+      { src: 'assets/images/5.jpg', caption: 'This is a navigation buttons.' },
+      { src: 'assets/images/6.jpg', caption: 'This is admin panel, this is where you can control the Suggested foods, Users account, and View Feedbacks.' },
+    ],
+  };
+
+  const galleryModal = document.getElementById('galleryModal');
+  const galleryImage = document.getElementById('galleryImage');
+  const galleryCounter = document.getElementById('galleryCounter');
+  const galleryCaption = document.getElementById('galleryCaption');
+  const galleryThumbs = document.getElementById('galleryThumbs');
+  const galleryPrev = document.getElementById('galleryPrev');
+  const galleryNext = document.getElementById('galleryNext');
+  const closeGalleryModal = document.getElementById('closeGalleryModal');
+
+  if (galleryModal && galleryImage) {
+    let currentImages = [];
+    let currentIndex = 0;
+
+    const renderThumbs = () => {
+      galleryThumbs.innerHTML = '';
+      currentImages.forEach((item, i) => {
+        const thumb = document.createElement('img');
+        thumb.src = item.src;
+        thumb.className = 'gallery-thumb' + (i === currentIndex ? ' is-active' : '');
+        thumb.alt = `Screenshot ${i + 1}`;
+        thumb.addEventListener('click', () => showImage(i));
+        galleryThumbs.appendChild(thumb);
+      });
+    };
+
+    const showImage = (index) => {
+      currentIndex = (index + currentImages.length) % currentImages.length;
+      const item = currentImages[currentIndex];
+      galleryImage.src = item.src;
+      galleryCaption.textContent = item.caption || '';
+      galleryCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+      galleryThumbs.querySelectorAll('.gallery-thumb').forEach((t, i) => {
+        t.classList.toggle('is-active', i === currentIndex);
+      });
+    };
+
+    const openGallery = (key) => {
+      const images = PROJECT_GALLERIES[key];
+      if (!images || !images.length) return;
+      currentImages = images;
+      currentIndex = 0;
+      renderThumbs();
+      showImage(0);
+      galleryModal.style.display = 'flex';
+      galleryModal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeGallery = () => {
+      galleryModal.classList.remove('show');
+      setTimeout(() => {
+        galleryModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }, 300);
+    };
+
+    document.querySelectorAll('.project-gallery-trigger').forEach((btn) => {
+      btn.addEventListener('click', () => openGallery(btn.dataset.gallery));
+    });
+
+    galleryPrev.addEventListener('click', () => showImage(currentIndex - 1));
+    galleryNext.addEventListener('click', () => showImage(currentIndex + 1));
+    closeGalleryModal.addEventListener('click', closeGallery);
+
+    galleryModal.addEventListener('click', (e) => {
+      if (e.target === galleryModal) closeGallery();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!galleryModal.classList.contains('show')) return;
+      if (e.key === 'Escape') closeGallery();
+      if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+      if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+    });
+  }
+
   /* ---------- resume modal ---------- */
   const resumeModal = document.getElementById('resumeModal');
   const viewResumeBtn = document.getElementById('viewResumeBtn');
